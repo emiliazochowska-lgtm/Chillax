@@ -1,0 +1,962 @@
+body {
+	--radius-s: 0px;
+	--radius-m: 0px;
+	--radius-l: 0px;
+	--input-radius: 0px;
+	--tab-radius-active: 0px;
+	--checkbox-radius: 0px;
+	--toggle-radius: 0px;
+	--toggle-thumb-radius: 0px;
+	--slider-thumb-radius: 0px;
+	--font-interface-theme: "Chillax", normal italic;
+	--font-text-override: "Chillax", normal italic;
+	--h1-font: "Chillax", normal italic;
+	--nav-heading-color: #4d2305;
+	--text-normal: #4d2305;
+	--background-secondary: #D9D0C1; 
+	--background-secondary-alt: #e336be; 
+	--interactive-normal: #F2EDE4;
+	--font-interface-override: "Chillax", normal italic;
+	--background-primary: #F2F2F2; 
+	--background-modifier-hover: #F2EDE4;
+	--color-accent-hsl: #dbadd1;
+	--text-accent: #e336be;
+	--text-accent-hover: #F2EDE4; 
+	--background-modifier-border: #e336be;
+	
+}
+
+.theme-dark {
+  --background-primary: #f5f2f0;
+  --background-secondary: #fcba03;
+  --background-secondary-alt: #e336be;
+}
+
+.theme-light {
+color-scheme: light;
+  --color-base-05: #F2EDE4;
+ }
+
+.workspace-tab-header.is-active::before, .workspace-tab-header.is-active::after {
+	display: none;
+}
+
+svg * {
+	stroke-linecap: square;
+	stroke-linejoin: miter;
+	rx: 0;
+	ry: 0;
+}
+
+.menu {
+	padding: var(--size-2-1);
+	background-color: var(--titlebar-background);
+}
+
+.menu-item {
+	padding: var(--size-4-1) var(--size-4-2);
+}
+
+.menu-separator {
+	margin: var(--size-2-1) calc(var(--size-2-1) * -1);
+}
+
+@font-face { 
+  font-family: "Chillax";
+  /* Add other properties here, as needed. For example: */
+  /*
+  font-weight: 100 900;
+  font-style: normal italic;
+  */
+  src: url(data:application/octet-stream;base64,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);
+}
+
+
+
+*/
+
+
+:root{
+	
+	/* === README ===
+	Snippet: MCL Multi Column / Author: Faiz Khuzaimah / twitter: @faizkhuzaimah / github: https://github.com/efemkay
+
+	Ver 0.10.0 (updated 2024-09-01)
+	- introduce fw dw and pw
+	- added left-right margin for Float Callout
+	- refactor List Column code to improve performance
+	Ver 0.9.10 (updated 2024-06-26)
+	- fix issues #81 and #89
+	Ver 0.9.9 (updated 2024-01-25)
+	- code cleanup (including -small -medium -large)
+	- improve css performance on float but require cssclass use again
+	Ver 0.9.8 (updated 2023-11-03)
+	- fixes on sub-callout becomes flexible height (and introduce option for such)
+	Ver 0.9.7 (updated 2023-10-13)
+	- GH FR issue #41, #42 and fixed GH issue #35. MC Callout now supports sub-blockquote and sub-paragraph
+	- GH FR issue #43. MC Callout now supports Multi Column within Multi Column
+	Ver 0.9.5 (updated 2023-07-30)
+	- fixes on minimal float affecting Minimal own wide table feature
+	- fixes on properties padding affecting Minimal
+	Ver 0.9.4 (updated 2023-07-06)
+	- improved MC Callout compatibility with Minimal theme V7.0
+	- improved MC Callout compatibility with Blue Topaz
+	Ver 0.9.3 (updated 2023-06-24)
+	- add support for List Column for li that's also a header
+	- fixes on column ruler to apply properly only for List Column on first ul only
+	- fixes on Float Callout in LP not floating due to additional div layer
+	Ver 0.9.2 (updated 2023-05-27)
+	- fix MC List Card mistakenly affect non List Card bullet list padding in same note
+	- fix obsidian default bullet "draw" not rendered properly in List Column (for the ones using tag and contextual typography plugin)
+	Ver 0.9.1 (updated 2023-04-06)
+	- fix MC "fixed center" option not properly coded
+	- fix MC List Grid previous not support sublist
+	- fix MC List Column margin top for first column
+	- fix MC List Grid for first bullet header
+	Ver 0.9.0 (updated 2023-04-01)
+	- MC - add option to hide SNW block ref for images in MC Callout
+	- MC - added wide option for List Grid/Card
+	- MC - added option to adjust float callout top margin
+	- MC - added fixed width option
+	- fix support minimal Callout style Outlined
+	- List Column/Grid/Card fully support :has()
+
+	What is this snippet for?
+	- to allow Obsidian users to change the layout with preset css by just specifying
+	  the cssClass in the frontmatter (YAML) or naming the Callout block
+	- available cssClass
+		- cssClass: two-column-list
+		- cssClass: {.two-column-list-block}
+		- cssClass: three-column-list
+		- cssClass: {.three-column-list-block}
+		- cssClass: multi-column-list
+	- available Callout format
+		- [!multi-column]
+		- [!blank] / [!blank-container]
+
+	Compatibility
+	- tested to work fine with the following Community Theme
+		- Default Theme
+		- Big Sur / Blue Topaz / California Cost / Notation / Pisum / Prism / Things / Typewriter (with minor issue on title color)
+	- known to be not working
+		- Primary (due to the theme heaving theming, box-shadow and so on)
+
+	Credits
+	- Kevin Powell Youtube channel
+	- https://css-tricks.com/
+	- discord OMG members @Cáo thoát tục (Cáo thoát tục#6993), @mulfok (mulfok#6931) and @Rainbell (Rainbell#3617)
+	- kepano for accomodating my snippets adjustment
+	- trainbuffer for numerous help and assisted css snippets
+*/
+
+
+
+body{
+	/* for list column, grid and card */
+	--list-min-width: 200px;
+	--col-rule-color: var(--background-modifier-border); /* #b3b3b3; */
+	--col-rule-width: 1px;
+	--list-grid-min-width: 250px;
+	--list-grid-wide-min-width: 350px;
+
+}
+.theme-dark {
+/*	--background-mcl-card: hsl(300, 5%, 15%); */
+}
+.theme-light {
+/*	--background-mcl-card: hsl(300, 5%, 90%); */
+}
+
+
+/* === General === */
+
+	/* -- Fixed Width definition -- */
+	/* quadruple the last .callout to win specificity with main multi-column callout */
+	div[data-callout-metadata*="fw"].callout.callout.callout { flex-grow: 0; flex-shrink: 0;}
+	div[data-callout-metadata*="fw1"].callout.callout.callout.callout { flex-basis: 100px; width: 100px; }
+	div[data-callout-metadata*="fw2"].callout.callout.callout.callout { flex-basis: 200px; width: 200px; }
+	div[data-callout-metadata*="fw3"].callout.callout.callout.callout { flex-basis: 300px; width: 300px; }
+	div[data-callout-metadata*="fw4"].callout.callout.callout.callout { flex-basis: 400px; width: 400px; }
+	div[data-callout-metadata*="fw5"].callout.callout.callout.callout { flex-basis: 500px; width: 500px; }
+	div[data-callout-metadata*="fw6"].callout.callout.callout.callout { flex-basis: 600px; width: 600px; }
+	div[data-callout-metadata*="fw7"].callout.callout.callout.callout { flex-basis: 700px; width: 700px; }
+	div[data-callout-metadata*="fw8"].callout.callout.callout.callout { flex-basis: 800px; width: 800px; }
+	div[data-callout-metadata*="fw9"].callout.callout.callout.callout { flex-basis: 900px; width: 900px; }
+
+	div[data-callout-metadata*="pw1"].callout.callout.callout.callout { flex-basis: 10%; width: 10%; }
+	div[data-callout-metadata*="pw2"].callout.callout.callout.callout { flex-basis: 18%; width: 18%; }
+	div[data-callout-metadata*="pw3"].callout.callout.callout.callout { flex-basis: 28%; width: 28%; }
+	div[data-callout-metadata*="pw4"].callout.callout.callout.callout { flex-basis: 38%; width: 38%; }
+	div[data-callout-metadata*="pw5"].callout.callout.callout.callout { flex-basis: 48%; width: 48%; }
+	div[data-callout-metadata*="pw6"].callout.callout.callout.callout { flex-basis: 58%; width: 58%; }
+	div[data-callout-metadata*="pw7"].callout.callout.callout.callout { flex-basis: 68%; width: 68%; }
+	div[data-callout-metadata*="pw8"].callout.callout.callout.callout { flex-basis: 78%; width: 78%; }
+	div[data-callout-metadata*="pw9"].callout.callout.callout.callout { flex-basis: 88%; width: 88%; }
+
+
+	/* metadata "wide-x" to control subcallout flexible max width. only discrete 2,4,8,16 */
+	div[data-callout="multi-column"].callout > .callout-content > div[data-callout-metadata*="mw0"].callout.callout { flex-basis: 0; }
+	div[data-callout="multi-column"].callout > .callout-content > div[data-callout-metadata*="dw1"].callout { flex: 1 0 auto; }
+	div[data-callout="multi-column"].callout > .callout-content > div[data-callout-metadata*="dw2"].callout { flex: 2 0 auto; }
+	div[data-callout="multi-column"].callout > .callout-content > div[data-callout-metadata*="dw3"].callout { flex: 3 0 auto; }
+	div[data-callout="multi-column"].callout > .callout-content > div[data-callout-metadata*="dw4"].callout { flex: 4 0 auto; }
+	div[data-callout="multi-column"].callout > .callout-content > div[data-callout-metadata*="dw5"].callout { flex: 5 0 auto; }
+	div[data-callout="multi-column"].callout > .callout-content > div[data-callout-metadata*="dw6"].callout { flex: 6 0 auto; }
+	div[data-callout="multi-column"].callout > .callout-content > div[data-callout-metadata*="dw7"].callout { flex: 7 0 auto; }
+	div[data-callout="multi-column"].callout > .callout-content > div[data-callout-metadata*="dw8"].callout { flex: 8 0 auto; }
+	div[data-callout="multi-column"].callout > .callout-content > div[data-callout-metadata*="dw9"].callout { flex: 9 0 auto; }
+
+
+
+
+/* === Multi Column Callout (MCC) === */
+	/* 	some issues still persists
+		(2) some theme uses transparency to affect .callout-title */
+
+	/* common MCC variables */
+	body {
+		--mcc-img-snw-display: none;
+		--callout-min-width: 200px;
+		--callout-nowrap-min-width: 250px;
+		--callout-gap: 1em;
+		--callout-margin: 0px;
+	}
+	[data-callout="multi-column"].callout {
+		--callout-blend-mode: normal;
+	}
+
+	/* -- Main MCC Code -- */
+
+		/* remove callout-title and make callout-content as part of main callout for box formatting */
+		div[data-callout="multi-column"].callout > .callout-title { display: none; }
+		div[data-callout="multi-column"].callout > .callout-content { display: contents; }
+		/* make the main callout a flex and remove box formatting */
+		/* --columns: unset to undo Sanctum's mod */
+		div[data-callout="multi-column"].callout
+			{ display: flex; flex-wrap: wrap; gap: var(--callout-gap); background: unset; border: unset; margin: unset; padding: unset; clear: both; --columns: unset; }
+		/* make the subcallout in flex column to allow growing vertically */
+		div[data-callout="multi-column"].callout .callout:not([data-callout="multi-column"]) { display: flex; flex-direction: column; }
+		div[data-callout="multi-column"].callout:not(.is-collapsed) .callout { margin-inline: var(--callout-margin); margin-block: var(--callout-margin); } /* to allow spacing for box shadow */
+		div[data-callout="multi-column"].callout .callout .callout-content { flex-grow: 1}
+
+		div[data-callout="multi-column"].callout > .callout-content > *:is(div,ul,blockquote,p) { flex: 1 1 var(--callout-min-width); margin: 0;}
+
+		/* metadata "wide-x" to control subcallout flexible max width. only discrete 2,4,8,16 */
+		div[data-callout="multi-column"].callout > .callout-content > div[data-callout-metadata*="min-0"] { flex-basis: 0; }
+		div[data-callout="multi-column"].callout > .callout-content > div[data-callout-metadata*="wide-2"] { flex-grow: 2; }
+		div[data-callout="multi-column"].callout > .callout-content > div[data-callout-metadata*="wide-3"] { flex-grow: 3; }
+		div[data-callout="multi-column"].callout > .callout-content > div[data-callout-metadata*="wide-4"] { flex-grow: 4; }
+		div[data-callout="multi-column"].callout > .callout-content > div[data-callout-metadata*="wide-5"] { flex-grow: 5; }
+
+		@media (min-width: 500px) {
+			/* .is-collapsed is used to draw the border-left only when it's collapsed */
+			div[data-callout="multi-column"].callout > div.callout-content .callout.is-collapsed { box-shadow: unset; height: min-content;}
+		}
+
+	/* -- MCC Variant - Flexible Height for Subcallout / Children -- */
+		/* also useful if one wants to have non callout children like table and don't want to fill the height */
+		div[data-callout="multi-column"].callout {}
+		div[data-callout="multi-column"][data-callout-metadata*="flex-h"].callout { align-items: flex-start; }
+
+	/* -- MCC Variation - Fixed Columns -- */
+		div[data-callout="multi-column"][data-callout-metadata*="col3"]:not([data-callout-metadata*="icons"]).callout {
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr;
+		}
+
+	/* -- MCC Variation - Icons -- */
+
+		/* Main code */
+		div[data-callout="multi-column"][data-callout-metadata*="icons"] {
+
+			&.callout { justify-content: center; }
+			&.callout .callout { display: flex; flex-direction: row; flex-wrap: wrap; }
+			&.callout.callout .callout-content > p { flex-grow: 1; text-align: center; }
+			/* Options for number of columns */
+			&[data-callout-metadata*="col2"].callout.callout .callout-content > p { flex-basis: 40%; }
+			&[data-callout-metadata*="col3"].callout.callout .callout-content > p { flex-basis: 30%; }
+			&[data-callout-metadata*="col4"].callout.callout .callout-content > p { flex-basis: 22%; }
+			&[data-callout-metadata*="col5"].callout.callout .callout-content > p { flex-basis: 18%; }
+
+			/* listive theme */
+			&.callout p:first-child { margin-top: revert; }
+		}
+
+
+	/* -- MCC Variation - Fixed Width Option -- */
+		/* Fixed Width Option (using callout-metadata) */
+		div[data-callout="multi-column"][data-callout-metadata*="center-fixed"].callout { justify-content: center; }
+		div[data-callout="multi-column"][data-callout-metadata*="left-fixed"].callout { justify-content: flex-start; }
+		div[data-callout="multi-column"][data-callout-metadata*="right-fixed"].callout { justify-content: flex-end; }
+		div[data-callout="multi-column"][data-callout-metadata*="fixed"].callout > .callout-content > *:is(div,ul) { flex-grow: 0; }
+
+		/* Callout size for Fixed Width Option */
+		div[data-callout="multi-column"][data-callout-metadata*="fixed"][data-callout-metadata*="small"].callout > .callout-content > *:is(div,ul) { flex-basis: calc( var(--float-small-width) * 0.5 ); }
+		div[data-callout="multi-column"][data-callout-metadata*="fixed"][data-callout-metadata*="medium"].callout > .callout-content > *:is(div,ul) { flex-basis: calc( var(--float-medium-width) * 0.65); }
+		div[data-callout="multi-column"][data-callout-metadata*="fixed"][data-callout-metadata*="large"].callout > .callout-content > *:is(div,ul) { flex-basis: calc( var(--float-large-width) * 0.8); }
+
+
+	/* -- MCC Variation - No Wrap Option -- */
+
+		/* No-Wrap Option (using callout-metadata) - for single row with horizontal scrollbar */
+		div[data-callout="multi-column"][data-callout-metadata*="no-wrap"].callout {
+			flex-wrap: nowrap; overflow-x: scroll;
+			& > .callout-content > *:is(div,ul) { flex-shrink: 0; }
+		}
+
+		/* No-Wrap Option, Width Options. Legacy width option. better to dw, pw and fw options at the top */
+		.callout[data-callout="multi-column"][data-callout-metadata*="no-wrap"] .callout[data-callout-metadata*="small"] { flex-basis: 300px; }
+		.callout[data-callout="multi-column"][data-callout-metadata*="no-wrap"] .callout[data-callout-metadata*="medium"] { flex-basis: 400px; }
+		.callout[data-callout="multi-column"][data-callout-metadata*="no-wrap"] .callout[data-callout-metadata*="large"] { flex-basis: 600px; }
+
+		/* Align center for items in callout */
+		div[data-callout="multi-column"] .callout[data-callout-metadata*="center"] { text-align: center; }
+
+
+	/* -- Special Adjustment for Community Themes -- */
+
+		 /* Special Adjustment -- for theme with negative margin & box shadow. (e.g. Prism) */
+		div[data-callout="multi-column"].callout > .callout-content { margin-top: unset;}
+		div[data-callout="multi-column"].callout:not(.is-collapsed) { box-shadow: unset;}
+
+		/* Blue Topaz - remove box shadow from main [!multi-column] */
+		body[class*="notebook-liked-markdown-page"].shade-callout-style .callout[data-callout="multi-column"] { box-shadow: unset !important; }
+
+		/* Special Adjustment -- for minimal left margin *//*
+		.markdown-source-view.mod-cm6.is-readable-line-width .cm-embed-block.cm-callout > div[data-callout="multi-column"].callout
+			{ width: 100%; max-width: 100%; margin-inline: 0 !important; }
+
+		/* Minimal -  .dataview.list-view-ul width - Minimal set the width with --line-width-adaptive (40rem by default) */
+		body:not(.table-100):not(.table-max):not(.table-wide) .markdown-preview-view.is-readable-line-width:not(.table-100):not(.table-max):not(.table-wide) div[data-callout="multi-column"].callout .dataview.list-view-ul {width: auto;}
+
+		/* Minimal -- Callout Outline, to ensure sub-callout not overlapped and hidden */
+		.callouts-outlined div[data-callout="multi-column"].callout:not(.is-collapsed) .callout:not([data-callout="multi-column"]) {
+			margin-top: 1em;
+		}
+
+
+	/* -- Special Adjustment for Plugins / Markdown Elements -- */
+
+		/* SNW plugin */
+		div[data-callout*="multi-column"].callout .callout-content span.image-embed + .snw-reference { display: var(--mcc-img-snw-display); }
+
+
+
+
+/* === Blank Container "DIV"'s - can be used with Main Multi-Column layout above === */
+
+	/* "blank-container" - no bg, no border, no title, no nothing, and remove the ligthen effect */
+	div[data-callout*="blank"].callout {--callout-blend-mode: normal;}
+	div[data-callout*="blank"].callout > .callout-title { display: none; }
+	div[data-callout*="blank"].callout > .callout-content {display: contents;}
+	div[data-callout*="blank"].callout { border: 0; padding-top: 0; padding-inline: 5px; background: unset; box-shadow: unset; }
+
+	/* -- No Margin -- */
+	/* issues still persists
+	   - headers font size not same
+	   - "no-margin" not fully workable in editing view due to wide-page override for Minimal theme
+	*/
+	div[data-callout-metadata*="no-margin"]:is(.cm-callout, .callout.callout, .callout.callout .callout-content) {margin: 0; padding: 0;}
+
+	/* -- No Margin for only child -- */
+		div[data-callout*="blank"].callout .callout-content > p:only-child {
+			margin-block: 0;
+		}
+
+
+	/* -- Special Adjustment for Themes -- */
+
+		/* Mado. Remove  theme's pseudo left border */
+		div[data-callout*="blank"] .callout-content::before { display: none; }
+
+
+/* === Text Justify === */
+
+	.text-justify :is(.markdown-preview-view p,.markdown-source-view .cm-line) { text-align: justify; }
+
+
+/* === Floating Callout - Base === */
+	/* float uses callout-metadata to control the layout. can apply to any callout */
+
+	/* variables */
+	body {
+		--float-small-width: 300px;
+		--float-medium-width: 400px;
+		--float-large-width: 600px;
+
+		--float-left-callout-margin: 0 15px 0 0;
+		--float-right-callout-margin: 0 0 0 15px;
+		--float-callout-top-margin: 0em;
+		--float-callout-bottom-margin: 0em;
+		--float-callout-snw-display: none;
+	}
+	/* variables */
+	body {
+		--float-left-callout-margin-inline: 0 12px;
+		--float-right-callout-margin-inline: 12px 0;
+		--float-snw-display: none;
+	}
+
+
+	/* -- Main Code. Use media query so that floats only works when there's enough width */
+	@media (min-width: 500px){
+		.markdown-source-view .cm-embed-block.cm-callout:has(> div.markdown-rendered > [data-callout-metadata*="float-left"]) { display: inline; z-index: 30;}
+		.markdown-source-view .cm-embed-block.cm-callout:has(> div.markdown-rendered > [data-callout-metadata*="float-left"]) > div > .callout { float: left; z-index: 30; }
+		.markdown-source-view .cm-embed-block.cm-callout:has(> div.markdown-rendered > [data-callout-metadata*="float-left"]) > .edit-block-button { display: none; }
+		.markdown-reading-view div[data-callout-metadata*="left"].callout {float: left;}
+
+		.markdown-source-view .cm-embed-block.cm-callout:has(> div.markdown-rendered > [data-callout-metadata*="float-right"]) { display: inline; z-index: 30;}
+		.markdown-source-view .cm-embed-block.cm-callout:has(> div.markdown-rendered > [data-callout-metadata*="float-right"]) > div > .callout { float: right; z-index: 30; }
+		.markdown-source-view .cm-embed-block.cm-callout:has(> div.markdown-rendered > [data-callout-metadata*="float-right"]) > .edit-block-button { display: none; }
+		.markdown-reading-view div[data-callout-metadata*="right"].callout {float: right; }
+
+		.markdown-source-view.mod-cm6 .cm-embed-block.cm-callout :is(.callout[data-callout-metadata*="left"], .callout[data-callout-metadata*="right"]) .callout-content > p:last-of-type { margin-bottom: auto;}
+
+		[data-callout-metadata*="float-right"].cm-embed-block.cm-callout {width: auto !important;}
+
+		/* remove margin from first para in the float callout */
+		.callout:is(div[data-callout-metadata*="left"],div[data-callout-metadata*="right"]) .callout-content > :is(p:first-child,ul:first-child,ol:first-child) {margin-top: 0;}
+
+		/* Adjustable Gap */
+		/* 26Mar2023 only top for now, to work on left-right later */
+		.markdown-source-view.mod-cm6 .callout:is(div[data-callout-metadata*="left"]),
+		.markdown-source-view.mod-cm6 .callout:is(div[data-callout-metadata*="right"])
+			{ margin-top: calc(1em * var(--line-height-normal) + var(--float-callout-top-margin)); }
+
+		/**/
+		.markdown-source-view.mod-cm6 .callout:is(div[data-callout-metadata*="left"]),
+		.markdown-reading-view div[data-callout-metadata*="left"].callout {
+			margin-inline: var(--float-left-callout-margin-inline);
+		}
+		.markdown-source-view.mod-cm6 .callout:is(div[data-callout-metadata*="right"]),
+		.markdown-reading-view div[data-callout-metadata*="right"].callout {
+			margin-inline: var(--float-right-callout-margin-inline);
+		}
+	}
+
+	/* -- FC Size Options -- */
+
+		/* legacy width option. better to dw, pw and fw options at the top */
+		[data-callout-metadata*="-small"].callout {width: var(--float-small-width);}
+		[data-callout-metadata*="-medium"].callout {width: var(--float-medium-width);}
+		[data-callout-metadata*="-large"].callout {width: var(--float-large-width);}
+
+
+	/* -- Special Adjustment for Plugins / Markdown Elements -- */
+
+		/* Option for Caption */
+		div:is([data-callout-metadata*="caption"]).callout > .callout-content > p .image-embed[alt]:not([alt$=".png"], [alt$=".jpg"], [alt$=".jpeg"], [alt$=".tiff"])::after {content: attr(alt); text-align: center; display: block; font-style: italic; color: var(--text-muted); }
+		div:is([data-callout-metadata*="caption"]).callout > .callout-content > p img:not(.emoji) { display: block; margin-right: auto; margin-left: auto;}
+
+		/* Introduce clear to break the float */
+			/* .markdown-preview-view h2, *//* remove this as it has weird spacing effect */
+			.embedded-backlinks { clear: both; }
+
+		/* for Blockquote underlap the float layout -- to remove by 30Jun2024, no longer needed */
+			/* .markdown-preview-view :is(blockquote) { overflow-x: auto; } /* fix for blockquote underlap */
+			/* .markdown-preview-view :is(p) { overflow: unset; } /* fix for para not wrapping around float. applicable for Willemstad */
+
+		/* for SNW plugin */
+		div:is([data-callout-metadata*="caption"],[data-callout-metadata*="left"],[data-callout-metadata*="right"]).callout > .callout-content > p .snw-embed-preview { display: var(--float-callout-snw-display); width: min-content; height: min-content; }
+		div:is([data-callout-metadata*="caption"],[data-callout-metadata*="left"],[data-callout-metadata*="right"]).callout > .callout-content > p .internal-embed.image-embed ~ br {display: none;}
+
+
+	/* -- Special Adjustment for Themes -- */
+
+		/* Minimal. Minimal Float. Updated for Minimal V7.4.7 */
+		/* "Reset" the default "cm-sizer" width but respect Minimal Settings, and require cssclass ".minimal-float" as Minimal own wide table will not work together with float i.e. removing :not(:has(table)) from .markdown-source-view.mod-cm6.is-readable-line-width:not(:has(table)) */
+		.minimal-float.markdown-source-view.mod-cm6 {
+			.cm-sizer {
+				max-width: var(--max-width); width: var(--line-width);
+			}
+			.cm-contentContainer.cm-contentContainer > .cm-content > div,
+			.cm-sizer > .embedded-backlinks,
+			.cm-sizer > .inline-title,
+			.cm-sizer > .metadata-container {
+				max-width: none; width: auto;
+			}
+		}
+
+		/* Minimal. Previous Minimal Float but with performance issue. Kept for reference until 30 June 2024 */ /*
+		:is(body[class*="minimal-tab-title"] .markdown-source-view.mod-cm6.is-readable-line-width:not(:has(table)), .minimal-float.markdown-source-view.mod-cm6) .cm-sizer { max-width: var(--max-width); width: var(--line-width); }
+
+		:is(body[class*="minimal-tab-title"] .markdown-source-view.mod-cm6.is-readable-line-width:not(:has(table)), .minimal-float.markdown-source-view.mod-cm6) .cm-contentContainer.cm-contentContainer>.cm-content>div,
+		:is(body[class*="minimal-tab-title"] .markdown-source-view.mod-cm6.is-readable-line-width:not(:has(table)), .minimal-float.markdown-source-view.mod-cm6) .cm-sizer>.embedded-backlinks,
+		:is(body[class*="minimal-tab-title"] .markdown-source-view.mod-cm6.is-readable-line-width:not(:has(table)), .minimal-float.markdown-source-view.mod-cm6) .cm-sizer>.inline-title,
+		:is(body[class*="minimal-tab-title"] .markdown-source-view.mod-cm6.is-readable-line-width:not(:has(table)), .minimal-float.markdown-source-view.mod-cm6) .cm-sizer>.metadata-container
+			{ max-width: none; width: auto; }
+
+
+		/* Minimal - fix to support Breadcrumbs plugin. Sub to the above LP float fix for Minimal */
+			body[class*="minimal-tab-title"].contextual-typography .minimal-float.markdown-preview-view.markdown-preview-view .BC-trail.markdown-preview-sizer { display: flex; }
+
+		/* Minimal - Size Option fix due to !important */
+		/* Minimal. Uses body[class*="minimal-tab-title"] as identifier. To override (have higher specificity) the width param. Can be merged to main code later on */
+		@media (min-width: 500px){
+			body[class*="minimal-tab-title"] .markdown-source-view.mod-cm6.is-readable-line-width .cm-embed-block.cm-callout > div[data-callout-metadata$="small"].callout { width: var(--float-small-width) !important; margin-left: 0 !important; }
+			body[class*="minimal-tab-title"] .markdown-source-view.mod-cm6.is-readable-line-width .cm-embed-block.cm-callout > div[data-callout-metadata$="medium"].callout { width: var(--float-medium-width) !important; margin-left: 0 !important; }
+		}
+		@media (min-width: 750px){
+			body[class*="minimal-tab-title"] .markdown-source-view.mod-cm6.is-readable-line-width .cm-embed-block.cm-callout > div[data-callout-metadata$="large"].callout { width: var(--float-large-width); margin-left: 0 !important; }
+		}
+
+
+/* === List Column ===*/
+	/* supported for (1) css :has(), (2) yaml cssclass, (3) CT plugin, and (4) MA plugin
+		- CSS :has() can be applied to sublists, so no column rule. CT plugin apply to div that houses the ul, so column gap is different
+		- xx-column-list for first level only list, but apply anywhere but xx-column-list-block apply at block level. Both require JV's Markdown Attributes plugin
+	*/
+
+
+	/* -- List Column/Grid/Card general styling -- */
+
+		/* hide tag in rendered view, dim it in edit mode and small size */
+		:is(div[class*="mcl"].markdown-rendered, .markdown-rendered) a[href*="#mcl"] {display: none;}
+		/* :is(div[class*="mcl"].markdown-rendered, .markdown-rendered div[class*="mcl"]) a[href*="#mcl"] {display: none;} */
+		.cm-s-obsidian .HyperMD-list-line span[class*="mcl"] {background-color: var(--background-primary) !important; color: var(--text-faint); font-size: 0.9rem; }
+
+
+	/* -- List Column using YAML cssclass and Markdown Attributes i.e. {.three-column-list-block} -- */
+
+		/* define the column gap and column rule */
+		.two-column-list div > ul,   .two-column-list-block,
+		.three-column-list div > ul,  .three-column-list-block,
+		.four-column-list div > ul,  .four-column-list-block,
+		.multi-column-list div > ul,  .multi-column-list-block
+			{ column-gap: 3rem; column-rule: var(--col-rule-width) solid var(--col-rule-color); }
+
+		/* define the column count, for fixed number of columns, to subject it to note's width (in future can use @container when installer v1.2.7 widely used ) */
+		@media (min-width: 500px ){
+			.two-column-list div > ul,   .two-column-list-block {columns: 2; }
+			.three-column-list div > ul,  .three-column-list-block {columns: 3; }
+			.four-column-list div > ul,  .four-column-list-block {columns: 4; }
+		}
+		.multi-column-list div > ul,  .multi-column-list-block { column-width: var(--list-min-width); }
+
+		/* Special adjustment for footnotes applied with -colum-list-block -- obsidian creates a <br> tag at the last <li> */
+		.footnotes [class$="-column-list-block"] li:last-of-type br:last-of-type {display: none;}
+
+
+	/* -- List Column Using Tag (using CSS has) -- */
+
+		/* set the column rules at ul level and adjust the margin */
+		ul:has(> li > [data-heading] > [href*="#mcl/list-column"]),
+		ul:has(> li > [href*="#mcl/list-column"]) {
+			margin-top: 0;
+            column-width: var(--list-min-width); column-gap: 1rem;
+            column-rule: var(--col-rule-width) solid var(--col-rule-color);
+        }
+
+		/* give some margin for the div, for first ul only */
+		div:has(> ul > li > [href*="#mcl/list-column"]),
+		div:has(> ul > li > [data-heading] > [href*="#mcl/list-column"])
+			{ margin-top: 0.8em; }
+
+		/* readjust [!blank] display contents */
+		div[data-callout*="blank"] > .callout-content:has(li [href*="#mcl/list-column"]) {display: block; margin: 0; padding: 0; }
+
+
+	/* -- General Adjustment for List Column -- */
+
+		/* Adjustment for misaligned bullets (this is a hack, need to find better solution later) */
+		ul:has([href="#mcl/list-column"]) li > .list-bullet::after, /* :has() */
+		.markdown-preview-view[class*="column-list"] li > .list-bullet::after, /* yaml cssclass */
+		.tag-mcllist-column ul li > .list-bullet::after, /* contextual typography */
+		ul[class*="column-list"] li > .list-bullet::after /* markdown attributes */
+			{ position: relative; }
+
+
+	/* -- Special Adjustment for Plugins for List Column -- */
+
+		/* for Custom Classes */
+		div.cc-container:has(li > [href="#mcl/list-column"]) { width: 100%; }
+
+
+
+/* === List Grid (using hashtag) === */
+	/* supported (1) :has() and (2) Contextual Typography plugin */
+
+	/* -- Main Code -- */
+
+		ul:has(> li > [data-heading] > [href*="#mcl/list-grid"]),
+		ul:has(> li > [href*="#mcl/list-grid"]),
+		div[class*="mcllist-grid"] ul:first-child
+			{ display: grid; grid-template-columns: repeat(auto-fit,minmax(var(--list-grid-min-width),1fr)); }
+
+		ul:has(> li > [data-heading] > [href*="#mcl/list-grid-wide"]),
+		ul:has(> li > [href*="#mcl/list-grid-wide"]),
+		div[class*="mcllist-grid-wide"] ul:first-child
+			{ grid-template-columns: repeat(auto-fit,minmax(var(--list-grid-wide-min-width),1fr)); }
+
+		ul:has(> li > [data-heading] > [href*="#mcl/list-grid"]) > li:not(:last-of-type),
+		ul:has(> li > [href*="#mcl/list-grid"]) > li:not(:last-of-type),
+		div[class*="mcllist-grid"] ul:first-child > li:not(:last-of-type)
+			{ padding-right: 1.6em; }
+
+		ul:has(> li > [data-heading] > [href*="#mcl/list-grid-sm"]),
+		ul:has(> li > [href*="#mcl/list-grid-sm"]),
+		div[class*="mcllist-grid-sm"] ul:first-child
+			{ --list-grid-min-width: 20%; }
+
+
+		/* - dashboard style, page level only, apply to any first level */
+		/* -- applicable only when width > 400pt, else just single column */
+		/* grid list block level cannot be done, it breaks formatting */
+		@media (min-width: 500px) {
+			.two-column-grid-list div > ul { display: grid; grid-column-gap:3em; grid-template-columns:repeat(2,1fr);}
+		}
+		@media (min-width: 600px) {
+			.three-column-grid-list div > ul { display: grid; grid-column-gap:3em; grid-template-columns:repeat(3,1fr);}
+		}
+
+
+
+/* === List Card (using hashtag) === */
+	/* supported (1) :has() and (2) Contextual Typography plugin */
+
+	body {
+		--mcl-card-header-border-width: 1px;
+		--mcl-card-bg-color: var(--background-secondary);
+		--mcl-card-gap: 0.2em;
+		--mcl-card-border-width: 1px;
+		--mcl-card-border-color: var(--background-modifier-border);
+	}
+
+	/* -- Main Code -- */
+
+		/* make the list grid, remove some ul padding */
+
+		:is(div:has(> ul [data-heading*="#mcl/list-card"]), div:has(> ul [href*="#mcl/list-card"]), [class*="mcllist-card"]) ul:first-child { display: grid; grid-template-columns: repeat(auto-fit,minmax(var(--list-grid-min-width),1fr)); margin-block-start: 0.5em; }
+		:is(div:has(> ul [data-heading*="#mcl/list-card-wide"]), [class*="mcllist-card-wide"]) ul:first-child { grid-template-columns: repeat(auto-fit, minmax(var(--list-grid-wide-min-width),1fr));}
+		/* unindent first level bullet */
+		:is(div:has(> ul [data-heading*="#mcl/list-card"]), div:has(> ul [href*="#mcl/list-card"]), .tag-mcllist-card) ul ul:not(ul ul ul) { padding-left: 0.1em; } /* with v1.6 this is somewhat redundant */
+		:is(div:has(> ul [data-heading*="#mcl/list-card"]), div:has(> ul [href*="#mcl/list-card"]), .tag-mcllist-card) ul ul:not(ul ul ul) > li { margin-inline-start: 0; }
+		:is(div:has(> ul [data-heading*="#mcl/list-card"]), div:has(> ul [href*="#mcl/list-card"]), div:has(> ul [data-heading*="#mcl/list-card"]) .callout-content, .tag-mcllist-card, .tag-mcllist-card .callout-content) > ul { padding-left: 0; }
+		:is(.is-mobile .markdown-preview-section) :is(div:has([data-heading*="#mcl/list-card"]), .tag-mcllist-card) :is(ol:not(ol ol ol),  ul:not(ul ul ul)) {padding-left: 0;}
+		/* reposition the collapse indicator and hover behaviour */
+		:is(div:has(> ul [data-heading*="#mcl/list-card"]), div:has(> ul [href*="#mcl/list-card"]), div:has(> ul [data-heading*="#mcl/list-card"]) .callout-content, .tag-mcllist-card, .tag-mcllist-card .callout-content) > ul > li {position: relative;}
+		:is(div:has(> ul [data-heading*="#mcl/list-card"]), div:has(> ul [href*="#mcl/list-card"]), div:has(> ul [data-heading*="#mcl/list-card"]) .callout-content, .tag-mcllist-card, .tag-mcllist-card .callout-content) > ul > li:hover > .collapse-indicator,
+		:is(div:has(> ul [data-heading*="#mcl/list-card"]), div:has(> ul [href*="#mcl/list-card"]), div:has(> ul [data-heading*="#mcl/list-card"]) .callout-content, .tag-mcllist-card, .tag-mcllist-card .callout-content) > ul > li > ul > li:hover > .collapse-indicator {opacity: 1;}
+		:is(div:has(> ul [data-heading*="#mcl/list-card"]), div:has(> ul [href*="#mcl/list-card"]), div:has(> ul [data-heading*="#mcl/list-card"]) .callout-content, .tag-mcllist-card, .tag-mcllist-card .callout-content) > ul > li > .collapse-indicator,
+		:is(div:has(> ul [data-heading*="#mcl/list-card"]), div:has(> ul [href*="#mcl/list-card"]), div:has(> ul [data-heading*="#mcl/list-card"]) .callout-content, .tag-mcllist-card, .tag-mcllist-card .callout-content) > ul > li > ul > li > .collapse-indicator {position: absolute; right: 0.7em; padding-right: 0;}
+		:is(div:has(> ul [data-heading*="#mcl/list-card"]), div:has(> ul [href*="#mcl/list-card"]), .tag-mcllist-card) ul::before {display: none;}
+		/* decorate the first heading for cards */
+		:is(div:has(> ul [data-heading*="#mcl/list-card"]), div:has(> ul [data-heading*="#mcl/list-card"]) .callout-content, .tag-mcllist-card, .tag-mcllist-card .callout-content) > ul > li:not(.is-collapsed) > [data-heading] {border-bottom: var(--mcl-card-header-border-width) solid var(--mcl-card-border-color); margin-bottom: 0.2em;}
+		/* hide the list bullet for list-card for first and second level */
+		:is(div:has(> ul [data-heading*="#mcl/list-card"]), div:has(> ul [href*="#mcl/list-card"]), .tag-mcllist-card) > div > div > ul > li > .list-bullet::after,
+		:is(div:has(> ul [data-heading*="#mcl/list-card"]), div:has(> ul [href*="#mcl/list-card"]), .tag-mcllist-card) > div > div > ul > li > ul > li > .list-bullet::after,
+		:is(div:has(> ul [data-heading*="#mcl/list-card"]), div:has(> ul [href*="#mcl/list-card"]), .tag-mcllist-card) > ul > li::before,
+		:is(div:has(> ul [data-heading*="#mcl/list-card"]), div:has(> ul [href*="#mcl/list-card"]), .tag-mcllist-card) > ul > li > ul > li::before,
+		:is(div:has(> ul [data-heading*="#mcl/list-card"]), div:has(> ul [href*="#mcl/list-card"]), .tag-mcllist-card) > ul > li > .list-bullet::after,
+		:is(div:has(> ul [data-heading*="#mcl/list-card"]), div:has(> ul [href*="#mcl/list-card"]), .tag-mcllist-card) > ul > li > ul > li > .list-bullet::after {visibility: hidden;}
+		/* remove the indentation guide */
+		:is(div:has(> ul [data-heading*="#mcl/list-card"]), div:has(> ul [href*="#mcl/list-card"]), .tag-mcllist-card) ul:not(ul ul ul ul)::before {--indentation-guide-width: 0;}
+		.markdown-rendered.show-indentation-guide :is(div:has(> ul [data-heading*="#mcl/list-card"]), .tag-mcllist-card) li > ul::before,
+		.markdown-rendered.show-indentation-guide :is(div:has(> ul [data-heading*="#mcl/list-card"]), .tag-mcllist-card) li > ol::before {border-right: 0; border-left: 0; }
+		:is(div:has(> ul [data-heading*="#mcl/list-card"]), div:has(> ul [href*="#mcl/list-card"]), .tag-mcllist-card) li {list-style: none;}
+		:is(div:has(> ul [data-heading*="#mcl/list-card"]), div:has(> ul [href*="#mcl/list-card"]), .tag-mcllist-card) li li li {list-style: circle;}
+		:is(div:has(> ul [data-heading*="#mcl/list-card"]), div:has(> ul [href*="#mcl/list-card"]), .tag-mcllist-card) .callout ul:not(ul ul) > li,
+		:is(div:has(> ul [data-heading*="#mcl/list-card"]), div:has(> ul [href*="#mcl/list-card"]), .tag-mcllist-card) ul:not(ul ul) > li
+			{ margin-inline: var(--mcl-card-gap); margin-bottom: calc(var(--mcl-card-gap)*2); padding: 0.3em 0.5em; outline: var(--mcl-card-border-width) solid var(--mcl-card-border-color); border-radius: 0.5em; background-color: var(--mcl-card-bg-color);}
+		:is(div:has(> ul [data-heading*="#mcl/list-card"]), div:has(> ul [href*="#mcl/list-card"]), .tag-mcllist-card) ul:not(ul ul) > li img {width: 100%;}
+		:is(div:has(> ul [data-heading*="#mcl/list-card"]), div:has(> ul [href*="#mcl/list-card"]), .tag-mcllist-card) ul img {margin: 0; float: none;}
+
+
+	/* -- Special Adjustment for Themes -- */
+
+		/* Sanctum */
+		.markdown-rendered .tag-mcllist-card ul img[alt*=right] {margin: 0;}
+
+
+
+/* === Style Settings === */
+
+/* @settings
+
+name: Modular CSS Layout - Multi Column
+id: modular-css-layout-mc
+settings:
+
+    -
+        id: multi-column-title
+        title: Multi Column Callout Settings
+        type: heading
+        level: 1
+		collapsed: true
+
+	-
+        id: mc-callout-general-title
+        title: MCC -- General
+        type: heading
+        level: 2
+		collapsed: false
+	-
+		id: mcc-img-snw-display
+		title: Hide SNW indicator for images in MC Callout
+		type: variable-select
+		default: none
+		options:
+			-
+				label: Show
+				value: inline
+			-
+				label: Hide
+				value: none
+
+	-
+        id: mc-callout-width-title
+        title: MCC -- Width
+        type: heading
+        level: 2
+		collapsed: false
+    -
+        id: callout-min-width
+        title: Minimum Sub-Callout Width
+        description: for sub-callout in [!multi-column]. in px units
+        type: variable-number-slider
+        default: 200
+        min: 100
+        max: 500
+        step: 50
+		format: px
+	-
+        id: callout-nowrap-min-width
+        title: Minimum NO-WRAP Sub-Callout Width
+        description: for sub-callout in [!multi-column|no-wrap]. in px units
+        type: variable-number-slider
+        default: 250
+        min: 100
+        max: 500
+        step: 50
+		format: px
+
+	-
+        id: mc-callout-gap-title
+        title: MCC -- Gap & Margin
+        type: heading
+        level: 2
+		collapsed: false
+    -
+        id: callout-gap
+        title: Sub-Callout Gap (any unit)
+        description: NO spacing between figure and unit
+        type: variable-text
+        default: 1em
+	-
+		id: callout-margin
+		title: Sub-Callout Margin (any unit)
+		description: to allow some spacing for box-shadow
+		type: variable-text
+		default: 0px
+
+
+
+	-
+        id: float-callout-title
+        title: Float Callout Settings
+        type: heading
+        level: 1
+		collapsed: true
+
+	-
+        id: float-callout-general-title
+        title: FC -- General
+        type: heading
+        level: 2
+		collapsed: false
+
+	-
+		id: float-callout-snw-display
+		title: Hide SNW indicator in Callout Float / Aside
+		type: variable-select
+		default: none
+		options:
+			-
+				label: Show
+				value: inline-block
+			-
+				label: Hide
+				value: none
+
+	-
+        id: float-width-title
+        title: FC -- Width
+        type: heading
+        level: 2
+		collapsed: false
+    -
+        id: float-small-width
+        title: Floating Callout Width - Small (in px)
+        type: variable-number-slider
+        default: 300
+        min: 200
+        max: 450
+        step: 50
+		format: px
+    -
+        id: float-medium-width
+        title: Floating Callout Width - Medium (in px)
+        type: variable-number-slider
+        default: 400
+        min: 300
+        max: 550
+        step: 50
+		format: px
+    -
+        id: float-large-width
+        title: Floating Callout Width - Large (in px)
+        type: variable-number-slider
+        default: 600
+        min: 500
+        max: 750
+        step: 50
+		format: px
+
+	-
+        id: float-gap-title
+        title: FC -- Gap & Margin
+        type: heading
+        level: 2
+		collapsed: false
+	-
+	    id: float-callout-top-margin
+		title: Adjust top margin for Float Left and Float Right
+		description: Can use em or px unit
+	    type: variable-text
+	    default: 0em
+	-
+	    id: float-left-callout-margin-inline
+		title: Adjust left-right margin for Float Left Callout
+		description: Enter in this order - "left right". Can use em or px unit
+		type: variable-text
+	    default: 0px 12px
+	-
+	    id: float-right-callout-margin-inline
+		title: Adjust left-right margin for Float Right Callout
+		description: Enter in this order - "left right". Can use em or px unit
+	    type: variable-text
+	    default: 12px 0px
+
+
+
+    -
+        id: mc-list-column-title
+        title: List Column
+		description: using `{.xxx-column-list-xxx}` and `#mcl/list-column`
+        type: heading
+        level: 1
+		collapsed: true
+	-
+        id: list-column-width-title
+        title: Width control for List Column
+        type: heading
+        level: 2
+		collapsed: false
+    -
+        id: list-min-width
+        title: Minimum Column Width (in px)
+        type: variable-number-slider
+        default: 200
+        min: 100
+        max: 500
+        step: 50
+		format: px
+
+	-
+        id: list-column-deco-title
+        title: Decoratives control for List Column
+        type: heading
+        level: 2
+		collapsed: false
+	-
+        id: col-rule-width
+        title: Ruler (vertical line between columns) width for List Column
+		description: in px unit. Set to 0 to disable ruler
+        type: variable-number-slider
+        default: 1
+        min: 0
+        max: 4
+        step: 1
+		format: px
+    -
+        id: col-rule-color
+        title: Ruler (vertical line between columns) color for List Column
+		type: variable-themed-color
+		format: hsl
+		opacity: true
+		default-light: '#'
+		default-dark: '#'
+
+
+	-
+        id: mc-list-grid-title
+        title: List Grid and List Card
+		description: using `#mcl/list-grid` and `#mcl/list-card`
+        type: heading
+        level: 1
+		collapsed: true
+
+	-
+        id: list-grid-card-width-title
+        title: Width control for List Grid and List Card
+        type: heading
+        level: 2
+		collapsed: false
+	-
+        id: list-grid-min-width
+        title: Minimum width for normal List Grid/Card
+		description: For `#mcl-list-grid` or `#mcl-list-card`. Can use em or px unit
+		type: variable-text
+		default: 250px
+	-
+        id: list-grid-wide-min-width
+        title: Minimum width for Wide List Grid/Card
+		description: For `#mcl/list-grid-wide` or `#mcl/list-card-wide`. Can use em or px unit
+		type: variable-text
+		default: 350px
+
+	-
+        id: list-card-deco-title
+        title: Decoratives control for List Card
+        type: heading
+        level: 2
+		collapsed: false
+	-
+		id: mcl-card-header-border-width
+		title: Bottom border for first header in List Card
+		description: Can use em or px unit. Set to 0 to disable the border
+		type: variable-text
+		default: 1px
+	-
+		id: mcl-card-bg-color
+		title: Background color for List Card
+		type: variable-themed-color
+		format: hsl
+		opacity: true
+		default-light: '#'
+		default-dark: '#'
+	-
+        id: mcl-card-gap
+        title: Gap between cards for List Card
+		description: Can use em or px unit
+		type: variable-text
+		default: 0.2em
+	-
+        id: mcl-card-border-width
+        title: Border width for each card in List Card
+		description: Can use em or px unit. Set to 0 to disable the border
+		type: variable-text
+		default: 1px
+	-
+		id: mcl-card-border-color
+		title: Border color for each card in List Card
+		type: variable-themed-color
+		format: hsl
+		opacity: true
+		default-light: '#'
+		default-dark: '#'
+
+*/
+	
+
+
