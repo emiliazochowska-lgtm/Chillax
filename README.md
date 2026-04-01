@@ -1,0 +1,2 @@
+# Chillax
+Obsidian theme Chillax
